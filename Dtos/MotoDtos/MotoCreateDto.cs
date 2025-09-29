@@ -1,23 +1,6 @@
-
 using System.ComponentModel.DataAnnotations;
 
-namespace tracking_code_api.Dtos.MotoDtos;
-
-//public class MotoCreateDto
-// {
-//     public string Placa { get; set; }
-// 
-//     [Required]
-//     public string Chassi { get; set; }
-// 
-//     [Required]
-//     public string Modelo { get; set; }
-// 
-//     [Required]
-//     public int SetorId { get; set; }
-// 
-//     public string Tag { get; set; }
-// }
+namespace DevopsTrackingCodeApi.Dtos.MotoDtos;
 
 // Record para a requisição de criação (POST)
 public record MotoCreateDto

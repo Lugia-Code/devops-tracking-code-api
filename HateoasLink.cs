@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-namespace tracking_code_api;
+namespace DevopsTrackingCodeApi;
 public record HateoasLink(string Href, string Rel, string Method = "GET");
 
 public static class HateoasHelper

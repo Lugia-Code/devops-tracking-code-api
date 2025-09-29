@@ -1,6 +1,6 @@
-using tracking_code_api.Entities;
+using DevopsTrackingCodeApi.Entities;
 
-namespace tracking_code_api.Dtos.AuditoriaDtos;
+namespace DevopsTrackingCodeApi.Dtos.AuditoriaDtos;
 
 public record AuditoriaReadDto
 (

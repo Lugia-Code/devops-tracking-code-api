@@ -18,17 +18,22 @@ using System.ComponentModel;
 using IdempotentAPI.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
-using tracking_code_api;
+using DevopsTrackingCodeApi;
 using System.Text.Json.Serialization;
-using tracking_code_api.Dtos;
-using tracking_code_api.Dtos.MotoDtos;
-using tracking_code_api.Dtos.SetorDtos;
-using tracking_code_api.Dtos.TagDtos;
+using DevopsTrackingCodeApi.Dtos;
+using DevopsTrackingCodeApi.Dtos.MotoDtos;
+using DevopsTrackingCodeApi.Dtos.SetorDtos;
+using DevopsTrackingCodeApi.Dtos.TagDtos;
 using Microsoft.AspNetCore.Mvc;
-using tracking_code_api.Dtos.UsuarioDtos;
-using tracking_code_api.Entities;
+using DevopsTrackingCodeApi.Dtos.UsuarioDtos;
+using DevopsTrackingCodeApi.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(8080); // Escuta na porta 8080 para IPv4 e IPv6
+});
 
 // Adiciona o serviço para gerenciar o JSON e ignora os ciclos de referência
 builder.Services.ConfigureHttpJsonOptions(options =>
@@ -50,13 +55,13 @@ builder.Services.Configure<JsonOptions>(options =>
     options.JsonSerializerOptions.WriteIndented = true;
     options.JsonSerializerOptions.MaxDepth = 32;
 });
-// Configuração do Banco de Dados para Oracle
+
+// Configuração do Banco de Dados para SQL Server Azure
+var connectionString = builder.Configuration.GetConnectionString("FiapAzureDb");
+
 builder.Services.AddDbContext<MotosDbContext>(opt =>
 {
-    opt.UseOracle(builder.Configuration.GetConnectionString("FiapOracleDb"));
-    
-    // IMPORTANTE: Desabilitar o lazy loading para evitar referências circulares
-    opt.EnableServiceProviderCaching(false);
+    opt.UseSqlServer(connectionString);
     opt.EnableSensitiveDataLogging(builder.Environment.IsDevelopment());
 });
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -66,19 +71,14 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddIdempotentMinimalAPI(new IdempotencyOptions());
 builder.Services.AddIdempotentAPIUsingDistributedCache();
 
-//builder.Services.AddIdempotentMinimalAPI(new IdempotencyOptions());
-//builder.Services.AddDistributedMemoryCache();
-//builder.Services.AddIdempotentAPIUsingDistributedCache();
-
-// Health Checks para Oracle
+// Health Checks para SQL Server Azure (CORRIGIDO)
 builder.Services.AddHealthChecks()
-    .AddOracle(
-        connectionString: builder.Configuration.GetConnectionString("FiapOracleDb") ?? string.Empty,
-        name: "OracleDb-check",
-        tags: new[] { "database", "oracle" },
+    .AddSqlServer(
+        connectionString: connectionString ?? string.Empty,
+        name: "SqlServer-check",
+        tags: new[] { "database", "sqlserver" },
         failureStatus: HealthStatus.Degraded,
-        healthQuery: "SELECT 1 FROM DUAL",
-        timeout: TimeSpan.FromSeconds(10)
+        timeout: TimeSpan.FromSeconds(30)
     );
 
 builder.Services.AddHealthChecksUI(opt =>
@@ -86,7 +86,7 @@ builder.Services.AddHealthChecksUI(opt =>
     opt.SetEvaluationTimeInSeconds(10);
     opt.MaximumHistoryEntriesPerEndpoint(10);
     opt.SetApiMaxActiveRequests(1);
-    opt.AddHealthCheckEndpoint("motos-api", "/health");
+    opt.AddHealthCheckEndpoint("motos-api", "http://localhost:8080/health");
 }).AddInMemoryStorage();
 
 // Rate Limiter
@@ -134,11 +134,6 @@ builder.Services.AddApiVersioning(options =>
     );
 });
 
-builder.Services.AddOpenApi(options =>
-{
-    options.AddSchemaTransformer<CircularReferenceSchemaTransformer>();
-});
-
 var app = builder.Build();
 
 app.UseRateLimiter();
@@ -150,7 +145,6 @@ app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.MapScalarApiReference();
 }
 

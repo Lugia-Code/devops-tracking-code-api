@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace tracking_code_api.Dtos.MotoDtos;
+namespace DevopsTrackingCodeApi.Dtos.MotoDtos;
+
 public record MotoUpdateDto
 {
     public string? Placa { get; set; }

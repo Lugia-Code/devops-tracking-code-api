@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
-namespace tracking_code_api.Entities;
+namespace DevopsTrackingCodeApi.Entities;
 
 [Table("SETOR")]
 public class Setor

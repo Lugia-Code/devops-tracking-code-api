@@ -1,4 +1,4 @@
-namespace tracking_code_api.Dtos.UsuarioDtos;
+namespace DevopsTrackingCodeApi.Dtos.UsuarioDtos;
 
 // DTO para a requisição de criação (POST)
 // Usado para registrar um novo usuário com as informações necessárias.

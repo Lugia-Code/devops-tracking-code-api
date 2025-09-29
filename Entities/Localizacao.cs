@@ -1,7 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DevopsTrackingCodeApi.Entities;
 
-namespace tracking_code_api.Entities;
+namespace DevopsTrackingCodeApi.Entities;
 
 [Table("LOCALIZACAO")]
 public class Localizacao

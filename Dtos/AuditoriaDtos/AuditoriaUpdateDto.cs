@@ -1,4 +1,4 @@
-namespace tracking_code_api.Dtos.AuditoriaDtos;
+namespace DevopsTrackingCodeApi.Dtos.AuditoriaDtos;
 
 public class AuditoriaUpdateDto
 {

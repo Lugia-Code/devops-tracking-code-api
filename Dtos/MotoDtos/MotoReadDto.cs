@@ -1,7 +1,7 @@
-using tracking_code_api.Dtos.SetorDtos;
-using tracking_code_api.Dtos.TagDtos;
+using DevopsTrackingCodeApi.Dtos.SetorDtos;
+using DevopsTrackingCodeApi.Dtos.TagDtos;
 
-namespace tracking_code_api.Dtos.MotoDtos;
+namespace DevopsTrackingCodeApi.Dtos.MotoDtos;
 
 // DTO de leitura ajustado para Setor e Tag serem opcionais
 public record MotoReadDto(

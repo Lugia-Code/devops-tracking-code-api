@@ -1,4 +1,4 @@
-namespace tracking_code_api.Dtos.UsuarioDtos;
+namespace DevopsTrackingCodeApi.Dtos.UsuarioDtos;
 
 // DTO para a requisição de atualização (PUT)
 // Permite que o usuário atualize suas informações.

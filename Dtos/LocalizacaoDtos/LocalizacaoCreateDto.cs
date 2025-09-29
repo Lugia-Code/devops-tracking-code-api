@@ -1,4 +1,4 @@
-namespace tracking_code_api.Dtos.LocalizacaoDtos;
+namespace DevopsTrackingCodeApi.Dtos.LocalizacaoDtos;
 
 // DTO para a requisição de criação (POST)
 // Usado para registrar a localização de uma tag em um setor.

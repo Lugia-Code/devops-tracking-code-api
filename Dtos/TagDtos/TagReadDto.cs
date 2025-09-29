@@ -1,4 +1,4 @@
-namespace tracking_code_api.Dtos.TagDtos;
+namespace DevopsTrackingCodeApi.Dtos.TagDtos;
 
 public record TagReadDto(
     string CodigoTag,

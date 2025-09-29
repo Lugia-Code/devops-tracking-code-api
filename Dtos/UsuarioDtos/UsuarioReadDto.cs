@@ -1,4 +1,4 @@
-namespace tracking_code_api.Dtos.UsuarioDtos;
+namespace DevopsTrackingCodeApi.Dtos.UsuarioDtos;
 
 // DTO para a resposta dos endpoints GET (leitura)
 // Inclui apenas os dados que devem ser expostos publicamente.

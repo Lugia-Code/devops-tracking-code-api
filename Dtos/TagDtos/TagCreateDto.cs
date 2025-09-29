@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace tracking_code_api.Dtos.TagDtos;
+namespace DevopsTrackingCodeApi.Dtos.TagDtos;
 
 public record TagCreateDto
 {

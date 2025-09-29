@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace tracking_code_api.Entities;
+namespace DevopsTrackingCodeApi.Entities;
 
 [Table("MOTO")]
 public class Moto

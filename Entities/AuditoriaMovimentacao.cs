@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace tracking_code_api.Entities;
+namespace DevopsTrackingCodeApi.Entities;
 
 [Table("AUDITORIA_MOVIMENTACAO")]
 public class AuditoriaMovimentacao
