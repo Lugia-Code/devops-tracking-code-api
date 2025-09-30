@@ -9,7 +9,7 @@ Sistema de rastreamento e gerenciamento de motocicletas desenvolvido em .NET 9.0
 - **Sistema de Tags**: Gerenciamento de tags RFID com vinculação/desvinculação de motos
 - **Controle de Setores**: Organização das motos por departamentos (Manutenção, Prontas para Aluguel, etc.)
 - **Rastreamento**: Histórico de localizações e movimentações
-- **API RESTful**: Endpoints completos com documentação OpenAPI/Swagger
+- **API RESTful**: Endpoints completos
 
 ## 💼 Benefícios para o Negócio
 
