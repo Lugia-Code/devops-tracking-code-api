@@ -44,7 +44,7 @@ O fluxo de deploy é feito via GitHub → Azure.
 3. O Dev faz deploy a partir do GitHub (manual ou futuro CI/CD).
 4. Tudo está dentro do Resource Group rg-fiap-tracking-api.
 
-![Arquitetura da Solução](docs/Captura de Tela 2025-09-29 às 21.35.47.png)
+![Arquitetura da Solução](docs/arquitetura.png)
 
 ---
 
