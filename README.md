@@ -32,6 +32,22 @@ Sistema de rastreamento e gerenciamento de motocicletas desenvolvido em .NET 9.0
 
 ---
 
+## 📐 Arquitetura da Solução
+
+A arquitetura proposta utiliza **Azure App Service** para hospedar a API em .NET 8, 
+e um **Azure SQL Database (motodb)** para persistência dos dados.  
+As requisições HTTP do usuário passam pelo App Service, que realiza consultas SQL ao banco.  
+O fluxo de deploy é feito via GitHub → Azure.  
+
+1. O usuário envia requisições HTTP → App Service.
+2. O App Service processa a API e consulta o banco.
+3. O Dev faz deploy a partir do GitHub (manual ou futuro CI/CD).
+4. Tudo está dentro do Resource Group rg-fiap-tracking-api.
+
+![Arquitetura da Solução](docs/arquitetura.png)
+
+---
+
 ## 📦 Pré-requisitos
 
 - [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
@@ -309,17 +325,6 @@ chmod +x 99-cleanup.sh
 - - **Nathália Gomes da Silva** - RM: [554945]
 - - **Nathan Magno Gustavo Cônsolo** - RM: [558987]
 - - **Júlio César Nunes Oliveira** - RM: [557774]
-
----
-
-## 📐 Arquitetura da Solução
-
-A arquitetura proposta utiliza **Azure App Service** para hospedar a API em .NET 8, 
-e um **Azure SQL Database (motodb)** para persistência dos dados.  
-As requisições HTTP do usuário passam pelo App Service, que realiza consultas SQL ao banco.  
-O fluxo de deploy é feito via GitHub → Azure.  
-
-![Arquitetura da Solução](docs/arquitetura.png)
 
 ---
 
