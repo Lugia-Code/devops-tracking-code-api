@@ -306,9 +306,20 @@ chmod +x 99-cleanup.sh
 
 ## 👥 Equipe
 
-- **Nathália Gomes da Silva** - RM: [554945]
+- - **Nathália Gomes da Silva** - RM: [554945]
 - - **Nathan Magno Gustavo Cônsolo** - RM: [558987]
 - - **Júlio César Nunes Oliveira** - RM: [557774]
+
+---
+
+## 📐 Arquitetura da Solução
+
+A arquitetura proposta utiliza **Azure App Service** para hospedar a API em .NET 8, 
+e um **Azure SQL Database (motodb)** para persistência dos dados.  
+As requisições HTTP do usuário passam pelo App Service, que realiza consultas SQL ao banco.  
+O fluxo de deploy é feito via GitHub → Azure.  
+
+![Arquitetura da Solução](docs/arquitetura.png)
 
 ---
 
